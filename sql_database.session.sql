@@ -7,4 +7,20 @@
 
 
 
+select name as CompanyName,
+Company_id
+from company_dim
+where Company_id IN(
 
+    select Company_id
+    from 
+    job_postings_fact
+    where
+    job_no_degree_mention = true
+)
+
+
+
+select job_title, job_postings_fact, salary_year_avg from job_postings_fact
+order by salary_year_avg
+limit 10
